@@ -17,6 +17,7 @@ class FirstLetterWalk:
         self.second_line()
         self.third_line()
         self.fourth_line()
+        self.fifth_line()
 
 
 
@@ -63,6 +64,19 @@ class FirstLetterWalk:
         # Decide which direction to go and how far to go in that direction.
         x_direction = [0.01]
         x_distance = [1]
+        self.x_step = x_direction[-1] * x_distance[-1]
+
+        y_direction = [0]
+        y_distance = [0]
+        self.y_step = y_direction[-1] * y_distance[-1]
+
+
+    def fifth_line(self):
+        """calculation for plotting points"""
+
+        # Decide which direction to go and how far to go in that direction.
+        x_direction = [0.04]
+        x_distance = [0.5]
         self.x_step = x_direction[-1] * x_distance[-1]
 
         y_direction = [0]
@@ -269,14 +283,119 @@ class FirstLetterWalk:
 
     def eleventh_character_draw(self):
         """Calculate all the points in the walk."""
-        self.x_values10 = [259.95999999994467, 285, 301, 310, 298, 287.5, 259.95999999994467]
-        self.y_values10 = [0, 1517, 4140, 9998, 14799, 18203, 19996]
+        # self.x_values10 = [259.95999999994467, 285, 301, 310, 298, 287.5, 259.95999999994467]
+        # self.y_values10 = [0, 1517, 4140, 9998, 14799, 18203, 19996]
+        self.x_values10 = [self.x_values9[0], self.x_values9[0]+25.04, self.x_values9[0]+41.04, self.x_values9[0]+50.04,
+                           self.x_values9[0]+38.04, self.x_values9[0]+27.54, self.x_values9[0]]
+
+        self.y_values10 = [self.y_values9[0], self.y_values9[0]+1517, self.y_values9[0]+4140, self.y_values9[0]+9998,
+                           self.y_values9[0]+14799, self.y_values9[0]+18203, self.y_values9[0]+19996]
 
 
+    def twelveth_character_draw(self):
+        """Calculate all the points in the walk."""
+        self.x_values11 = [self.x_values9[0] + 50]
+        self.y_values11 = [self.y_values9[0]]
 
+        # Keep taking steps until the walk reaches the desired length.
+        while len(self.x_values11) < self.num_points:
 
+            self.fifth_line()
+            # Reject that go nowhere.
+            if self.x_step == 0 and self.y_step == 0:
+                continue
 
+            # Calculate the new position.
+            x = self.x_values11[-1] + self.x_step
 
+            y = self.y_values11[-1] + self.y_step
+
+            self.x_values11.append(x)
+            self.y_values11.append(y)
+
+    def thirteen_character_draw(self):
+        """Calculate all the points in the walk."""
+        self.x_values12 = [self.x_values11[int(len(self.x_values11)/2)]]
+        self.y_values12 = [self.y_values11[int(len(self.y_values11)/2)]]
+
+        # Keep taking steps until the walk reaches the desired length.
+        while len(self.y_values12) < self.num_points:
+
+            self.first_line()
+            # Reject that go nowhere.
+            if self.x_step == 0 and self.y_step == 0:
+                continue
+
+            # Calculate the new position.
+            x = self.x_values12[-1] + self.x_step
+
+            y = self.y_values12[-1] + self.y_step
+
+            self.x_values12.append(x)
+            self.y_values12.append(y)
+
+    def fourteen_character_draw(self):
+        """Calculate all the points in the walk."""
+        self.x_values13 = [self.x_values11[0]]
+        self.y_values13 = [self.y_values12[-1]]
+
+        # Keep taking steps until the walk reaches the desired length.
+        while len(self.y_values13) < self.num_points:
+
+            self.fifth_line()
+            # Reject that go nowhere.
+            if self.x_step == 0 and self.y_step == 0:
+                continue
+
+            # Calculate the new position.
+            x = self.x_values13[-1] + self.x_step
+
+            y = self.y_values13[-1] + self.y_step
+
+            self.x_values13.append(x)
+            self.y_values13.append(y)
+
+    def fifteen_character_draw(self):
+        """Calculate all the points in the walk."""
+        self.x_values14 = [self.x_values13[-1] + 20]
+        self.y_values14 = [self.y_values13[-1]]
+
+        # Keep taking steps until the walk reaches the desired length.
+        while len(self.y_values14) < self.num_points:
+
+            self.fifth_line()
+            # Reject that go nowhere.
+            if self.x_step == 0 and self.y_step == 0:
+                continue
+
+            # Calculate the new position.
+            x = self.x_values14[-1] + self.x_step
+
+            y = self.y_values14[-1] + self.y_step
+
+            self.x_values14.append(x)
+            self.y_values14.append(y)
+
+    def sixteen_character_draw(self):
+        """Calculate all the points in the walk."""
+        self.x_values15 = [self.x_values14[int(len(self.x_values14)/2)]]
+        self.y_values15 = [self.y_values13[-1]]
+
+        # Keep taking steps until the walk reaches the desired length.
+        while len(self.y_values15) < self.num_points:
+
+            self.first_line()
+            # Reject that go nowhere.
+            if self.x_step == 0 and self.y_step == 0:
+                continue
+
+            # Calculate the new position.
+            x = self.x_values15[-1] + self.x_step
+
+            y = self.y_values15[-1] - self.y_step
+
+            self.x_values15.append(x)
+            self.y_values15.append(y)
 
 
 
